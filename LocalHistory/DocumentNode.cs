@@ -19,27 +19,39 @@ using System.Globalization;
 
 namespace Intel.LocalHistory
 {
-  public class DocumentNode
-  {
-    private readonly string repositoryPath;
-    private readonly string originalPath;
-    private readonly string fileName;
-    private readonly DateTime time;
-
-    public DocumentNode(string repositoryPath, string originalPath, string fileName, DateTime time)
+    public class DocumentNode
     {
-      this.repositoryPath = repositoryPath;
-      this.originalPath = originalPath;
-      this.fileName = fileName;
-      this.time = time;
+        private readonly string repositoryPath;
+        private readonly string originalPath;
+        private readonly string fileName;
+        private readonly DateTime time;
+
+        public DocumentNode(string repositoryPath, string originalPath, string fileName, DateTime time)
+        {
+            this.repositoryPath = repositoryPath;
+            this.originalPath = originalPath;
+            this.fileName = fileName;
+            this.time = time;
+        }
+
+        public string RepositoryPath
+        {
+            get { return repositoryPath; }
+        }
+
+        public string OriginalPath
+        {
+            get { return originalPath; }
+        }
+
+        public string FileName
+        {
+            get { return fileName; }
+        }
+
+        public string TimeStamp
+        {
+            get { return time.ToString(CultureInfo.CurrentCulture); }
+        }
     }
-
-    public string RepositoryPath { get { return repositoryPath; } }
-
-    public string OriginalPath { get { return originalPath; } }
-
-    public string FileName { get { return fileName; } }
-
-    public string TimeStamp { get { return time.ToString(CultureInfo.CurrentCulture); } }
-  }
 }

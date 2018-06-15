@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable"
+              xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <!--  This is the file that defines the actual layout and type of the commands.
         It is divided in different sections (e.g. command definition, command
@@ -15,12 +17,10 @@
         defining some of the constants that we will use inside the file. -->
 
   <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
-  <Extern href="stdidcmd.h"/>
+  <Extern href="stdidcmd.h" />
 
   <!--This header contains the command ids for the menus provided by the shell. -->
-  <Extern href="vsshlids.h"/>
-
-
+  <Extern href="vsshlids.h" />
 
 
   <!--The Commands section is where we the commands, menus and menu groups are defined.
@@ -34,7 +34,7 @@
     group; your package should define its own command set in order to avoid collisions  
     with command ids defined by other packages. -->
 
-    
+
     <!-- In this section you can define new menu groups. A menu group is a container for 
          other menus or buttons (commands); from a visual point of view you can see the 
          group as the part of a menu contained between two lines. The parent of a group 
@@ -42,13 +42,12 @@
     <Groups>
 
       <Group guid="guidLocalHistoryCmdSet" id="MyMenuGroup" priority="0x0600">
-        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE"/>
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
       </Group>
-      
 
 
     </Groups>
-    
+
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button 
         or combo box in a toolbar. -->
@@ -71,7 +70,7 @@
 
 
       <Button guid="guidLocalHistoryCmdSet" id="cmdidLocalHistoryWindow" priority="0x0100" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1"/>
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
         <Icon guid="guidImages" id="bmpPic1" />
         <Strings>
           <ButtonText>Local History</ButtonText>
@@ -80,7 +79,7 @@
 
 
     </Buttons>
-   
+
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
     <Bitmaps>
       <!--  The bitmap id is defined in a way that is a little bit different from the others: 
@@ -88,20 +87,18 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used 
             inside a button definition. An important aspect of this declaration is that the element id 
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\Images.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows"/>
-      
+      <Bitmap guid="guidImages" href="Resources\Images.png"
+              usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows" />
+
     </Bitmaps>
- 
+
   </Commands>
-
-
-
 
 
   <Symbols>
     <!-- This is the package guid. -->
     <GuidSymbol name="guidLocalHistoryPkg" value="{f39222a4-c9d6-4f51-8a0e-10b8b9dc1e4e}" />
-    
+
     <!-- This is the guid used to group the menu commands together -->
     <GuidSymbol name="guidLocalHistoryCmdSet" value="{9c0eb15a-b3d9-4d2c-b4eb-57703d1ee539}">
 
@@ -109,10 +106,9 @@
       <IDSymbol name="cmdidLocalHistoryMenuItem" value="0x0100" />
       <IDSymbol name="cmdidLocalHistoryWindow" value="0x0101" />
     </GuidSymbol>
-    
-    
-    
-    <GuidSymbol name="guidImages" value="{e78faa4f-27a7-4d4c-803a-90f5ce1a421f}" >
+
+
+    <GuidSymbol name="guidImages" value="{e78faa4f-27a7-4d4c-803a-90f5ce1a421f}">
       <IDSymbol name="bmpPic1" value="1" />
       <IDSymbol name="bmpPic2" value="2" />
       <IDSymbol name="bmpPicSearch" value="3" />

@@ -16,25 +16,25 @@ limitations under the License.
 
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
-using System;
 
 namespace Intel.LocalHistory.Utilities
 {
-  class IVsSelectionEventsAdapter : IVsSelectionEvents
-  {
-    public virtual int OnCmdUIContextChanged(uint dwCmdUICookie, int fActive)
+    internal class IVsSelectionEventsAdapter : IVsSelectionEvents
     {
-      return VSConstants.E_NOTIMPL;
-    }
+        public virtual int OnCmdUIContextChanged(uint dwCmdUICookie, int fActive)
+        {
+            return VSConstants.E_NOTIMPL;
+        }
 
-    public virtual int OnElementValueChanged(uint elementid, object varValueOld, object varValueNew)
-    {
-      return VSConstants.E_NOTIMPL;
-    }
+        public virtual int OnElementValueChanged(uint elementid, object varValueOld, object varValueNew)
+        {
+            return VSConstants.E_NOTIMPL;
+        }
 
-    public virtual int OnSelectionChanged(IVsHierarchy pHierOld, uint itemidOld, IVsMultiItemSelect pMISOld, ISelectionContainer pSCOld, IVsHierarchy pHierNew, uint itemidNew, IVsMultiItemSelect pMISNew, ISelectionContainer pSCNew)
-    {
-      return VSConstants.E_NOTIMPL;
+        public virtual int OnSelectionChanged(IVsHierarchy pHierOld, uint itemidOld, IVsMultiItemSelect pMISOld, ISelectionContainer pSCOld, IVsHierarchy pHierNew, uint itemidNew,
+            IVsMultiItemSelect pMISNew, ISelectionContainer pSCNew)
+        {
+            return VSConstants.E_NOTIMPL;
+        }
     }
-  }
 }

@@ -14,43 +14,45 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Intel.LocalHistory.Utilities;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell.Interop;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using Intel.LocalHistory.Utilities;
+using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Intel.LocalHistory
 {
-  class LocalHistoryDocumentListener : IVsRunningDocTableEvents3Adapter
-  {
-    private readonly IVsRunningDocumentTable documentTable;
-    private readonly DocumentRepository documentRepository;
-
-    public LocalHistoryDocumentListener(IVsRunningDocumentTable documentTable, DocumentRepository documentRepository)
+    internal class LocalHistoryDocumentListener : IVsRunningDocTableEvents3Adapter
     {
-      this.documentTable = documentTable;
-      this.documentRepository = documentRepository;
+        private readonly IVsRunningDocumentTable documentTable;
+        private readonly DocumentRepository documentRepository;
+
+        public LocalHistoryDocumentListener(IVsRunningDocumentTable documentTable, DocumentRepository documentRepository)
+        {
+            this.documentTable = documentTable;
+            this.documentRepository = documentRepository;
+        }
+
+        /// <summary>
+        /// When this event is triggered on a project item, a copy of the file is saved to the <code>DocumentRepository</code>.
+        /// </summary>
+        public override int OnBeforeSave(
+            uint docCookie
+        )
+        {
+            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering OnBeforeSave() of: {0}", ToString()));
+
+            uint pgrfRDTFlags, pdwReadLocks, pdwEditLocks;
+            string pbstrMkDocument;
+            IVsHierarchy ppHier;
+            uint pitemid;
+            IntPtr ppunkDocData;
+            documentTable.GetDocumentInfo(docCookie, out pgrfRDTFlags, out pdwReadLocks, out pdwEditLocks, out pbstrMkDocument, out ppHier, out pitemid, out ppunkDocData);
+
+            documentRepository.CreateRevision(pbstrMkDocument);
+
+            return VSConstants.S_OK;
+        }
     }
-
-    /// <summary>
-    /// When this event is triggered on a project item, a copy of the file is saved to the <code>DocumentRepository</code>.
-    /// </summary>
-    public override int OnBeforeSave(
-     uint docCookie
-    )
-    {
-      Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering OnBeforeSave() of: {0}", this.ToString()));
-
-      uint pgrfRDTFlags, pdwReadLocks, pdwEditLocks;
-      string pbstrMkDocument; IVsHierarchy ppHier;
-      uint pitemid; IntPtr ppunkDocData;
-      documentTable.GetDocumentInfo(docCookie, out pgrfRDTFlags, out pdwReadLocks, out pdwEditLocks, out pbstrMkDocument, out ppHier, out pitemid, out ppunkDocData);
-
-      documentRepository.CreateRevision(pbstrMkDocument);
-
-      return VSConstants.S_OK;
-    }
-  }
 }

@@ -16,83 +16,82 @@ limitations under the License.
 
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
-using System;
 
 namespace Intel.LocalHistory.Utilities
 {
-  class IVsSolutionEventsAdapter : IVsSolutionEvents
-  {
-    public virtual int OnAfterOpenSolution(object pUnkReserved, int fNewSolution)
+    internal class IVsSolutionEventsAdapter : IVsSolutionEvents
     {
-      return VSConstants.S_OK;
+        public virtual int OnAfterOpenSolution(object pUnkReserved, int fNewSolution)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnAfterCloseSolution(
+            object pUnkReserved)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnAfterLoadProject(
+            IVsHierarchy pStubHierarchy,
+            IVsHierarchy pRealHierarchy)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnAfterOpenProject(
+            IVsHierarchy pHierarchy,
+            int fAdded)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnBeforeCloseProject(
+            IVsHierarchy pHierarchy,
+            int fRemoved)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnBeforeCloseSolution(
+            object pUnkReserved)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnBeforeUnloadProject(
+            IVsHierarchy pRealHierarchy,
+            IVsHierarchy pStubHierarchy)
+        {
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnQueryCloseProject(
+            IVsHierarchy pHierarchy,
+            int fRemoving,
+            ref int pfCancel)
+        {
+            pfCancel = VSConstants.S_OK;
+
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnQueryCloseSolution(
+            object pUnkReserved,
+            ref int pfCancel)
+        {
+            pfCancel = VSConstants.S_OK;
+
+            return VSConstants.S_OK;
+        }
+
+        public virtual int OnQueryUnloadProject(
+            IVsHierarchy pRealHierarchy,
+            ref int pfCancel)
+        {
+            pfCancel = VSConstants.S_OK;
+
+            return VSConstants.S_OK;
+        }
     }
-
-    public virtual int OnAfterCloseSolution(
-        Object pUnkReserved)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnAfterLoadProject(
-        IVsHierarchy pStubHierarchy,
-        IVsHierarchy pRealHierarchy)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnAfterOpenProject(
-        IVsHierarchy pHierarchy,
-        int fAdded)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnBeforeCloseProject(
-        IVsHierarchy pHierarchy,
-        int fRemoved)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnBeforeCloseSolution(
-        Object pUnkReserved)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnBeforeUnloadProject(
-        IVsHierarchy pRealHierarchy,
-        IVsHierarchy pStubHierarchy)
-    {
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnQueryCloseProject(
-        IVsHierarchy pHierarchy,
-        int fRemoving,
-        ref int pfCancel)
-    {
-      pfCancel = VSConstants.S_OK;
-
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnQueryCloseSolution(
-        Object pUnkReserved,
-        ref int pfCancel)
-    {
-      pfCancel = VSConstants.S_OK;
-
-      return VSConstants.S_OK;
-    }
-
-    public virtual int OnQueryUnloadProject(
-        IVsHierarchy pRealHierarchy,
-        ref int pfCancel)
-    {
-      pfCancel = VSConstants.S_OK;
-
-      return VSConstants.S_OK;
-    }
-  }
 }

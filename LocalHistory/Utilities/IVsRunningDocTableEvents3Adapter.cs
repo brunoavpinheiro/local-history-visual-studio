@@ -16,84 +16,82 @@ limitations under the License.
 
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell.Interop;
-using System;
 
 namespace Intel.LocalHistory.Utilities
 {
-  class IVsRunningDocTableEvents3Adapter : IVsRunningDocTableEvents3
-  {
-    public virtual int OnBeforeSave(
-     uint docCookie
-    )
+    internal class IVsRunningDocTableEvents3Adapter : IVsRunningDocTableEvents3
     {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnBeforeSave(
+            uint docCookie
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnAfterAttributeChange(
-     uint docCookie,
-     uint grfAttribs
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnAfterAttributeChange(
+            uint docCookie,
+            uint grfAttribs
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnAfterAttributeChangeEx(
-        uint docCookie,
-        uint grfAttribs,
-        IVsHierarchy pHierOld,
-        uint itemidOld,
-        string pszMkDocumentOld,
-        IVsHierarchy pHierNew,
-        uint itemidNew,
-        string pszMkDocumentNew
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnAfterAttributeChangeEx(
+            uint docCookie,
+            uint grfAttribs,
+            IVsHierarchy pHierOld,
+            uint itemidOld,
+            string pszMkDocumentOld,
+            IVsHierarchy pHierNew,
+            uint itemidNew,
+            string pszMkDocumentNew
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnAfterDocumentWindowHide(
-        uint docCookie,
-        IVsWindowFrame pFrame
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnAfterDocumentWindowHide(
+            uint docCookie,
+            IVsWindowFrame pFrame
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnAfterFirstDocumentLock(
-     uint docCookie,
-     uint dwRDTLockType,
-     uint dwReadLocksRemaining,
-     uint dwEditLocksRemaining
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnAfterFirstDocumentLock(
+            uint docCookie,
+            uint dwRDTLockType,
+            uint dwReadLocksRemaining,
+            uint dwEditLocksRemaining
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnAfterSave(
-     uint docCookie
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnAfterSave(
+            uint docCookie
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-    public virtual int OnBeforeDocumentWindowShow(
-     uint docCookie,
-     int fFirstShow,
-     IVsWindowFrame pFrame
-    )
-    {
-      return VSConstants.S_OK;
-    }
+        public virtual int OnBeforeDocumentWindowShow(
+            uint docCookie,
+            int fFirstShow,
+            IVsWindowFrame pFrame
+        )
+        {
+            return VSConstants.S_OK;
+        }
 
-
-    public virtual int OnBeforeLastDocumentUnlock(
-     uint docCookie,
-     uint dwRDTLockType,
-     uint dwReadLocksRemaining,
-     uint dwEditLocksRemaining
-    )
-    {
-      return VSConstants.S_OK;
+        public virtual int OnBeforeLastDocumentUnlock(
+            uint docCookie,
+            uint dwRDTLockType,
+            uint dwReadLocksRemaining,
+            uint dwEditLocksRemaining
+        )
+        {
+            return VSConstants.S_OK;
+        }
     }
-  }
 }
